@@ -7,10 +7,10 @@ from django.contrib.auth       import logout, login
 
 def login_page(req:HttpRequest):
   
+  return redirect('/web/')
   if req.user.is_authenticated:
-    return redirect('/web')
 
-  
+    pass
   if req.method == "POST":
     form = AuthenticationForm(req, data=req.POST)
     
@@ -45,5 +45,5 @@ def login_page(req:HttpRequest):
 def logout_page(req:HttpRequest):
   
   logout(req)
-  
+  return redirect("/web/")
   return render(req, "main/auth_pages/logout.html")
